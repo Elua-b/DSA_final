@@ -121,10 +121,9 @@ struct Patient_linked_list {
             temp->next = new_patient;
         }
     }
-    //validate if id is anumber
+    //validate if input is anumber
     bool is_number(const string& s) {
-        return !s.empty() && std::find_if(s.begin(),
-            s.end(), [](unsigned char c) { return !std::isdigit(c); }) == s.end();
+        return !s.empty() && find_if(s.begin(), s.end(), [](char c) { return !isdigit(c); }) == s.end();
     }
     //verify if date is in  providded format
     bool is_date(const string& s) {
@@ -150,6 +149,8 @@ struct Patient_linked_list {
         }
         return false;
     }
+    //validate if input is anumber
+
     //display patients
     void display_patients() {
         Patient_node* temp = this->head;
@@ -207,6 +208,7 @@ struct Appointment_linked_list {
         }
         return false;
     }
+
 //display appointments
     void display_appointments() {
         Appointment_node* temp = this->head;
@@ -264,6 +266,10 @@ int main (){
         cout<<"---------------------"<<endl;
         cout << "Enter Doctor ID: ";
         cin >> id;
+        if(!patients.is_number(to_string(id))){
+            cout<<"ID must be a number"<<endl;
+            break;
+        }
         cout << "Enter Doctor Name: ";
         cin >> name;
         cout << "Enter Doctor Specialization: ";
@@ -296,6 +302,11 @@ int main (){
         cout<<"---------------------"<<endl;
         cout << "Enter Patient ID: ";
         cin >> id;
+        if (patients.is_number(to_string(id))){
+            cout<<"ID must be a number"<<endl;
+            break;
+        }
+
         cout << "Enter Patient Name: ";
         cin >> name;
         cout << "Enter Patient DOB(YYYY-MM-DD) : ";
@@ -333,10 +344,22 @@ int main (){
         cout<<"---------------------"<<endl;
         cout << "Enter Appointment ID: ";
         cin >> id;
+        if(!patients.is_number(to_string(id))){
+            cout<<"ID must be a number"<<endl;
+            break;
+        }
         cout << "Enter Patient ID: ";
         cin >> patient_id;
+        if(!patients.is_number(to_string(patient_id))){
+            cout<<"ID must be a number"<<endl;
+            break;
+        }
         cout << "Enter Doctor ID: ";
         cin >> doctor_id;
+        if(!patients.is_number(to_string(doctor_id))){
+            cout<<"ID must be a number"<<endl;
+            break;
+        }
         cout << "Enter Date(YYYY-MM-DD): ";
         cin >> date;
         if(!patients.verify_id(patient_id)){
