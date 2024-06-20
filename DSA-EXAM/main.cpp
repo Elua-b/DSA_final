@@ -243,6 +243,7 @@ int main (){
         }
         Doctor new_doctor(id, name, specialization);
         doctors.add_doctor(new_doctor);
+        cout<<"---Doctor added successfully---"<<endl;
         break;
         }
         case 2: {
@@ -267,6 +268,7 @@ int main (){
         }
         Patient new_patient(id, name, dob,gender);
         patients.add_patient(new_patient);
+        cout<<"---Patient added successfully---"<<endl;
         break;
         }
         case 3: {
@@ -298,6 +300,7 @@ int main (){
         }
         Appointment new_appointment(id, patient_id, doctor_id, date);
         appointments.add_appointment(new_appointment);
+        cout<<"---Appointment added successfully---"<<endl;
         break;
         }
         case 4: {
