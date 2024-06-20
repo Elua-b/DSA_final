@@ -300,6 +300,7 @@ int main (){
         cin >> name;
         cout << "Enter Patient DOB(YYYY-MM-DD) : ";
         cin >> dob;
+
         cout<<"Enter Patient Gender: ";
         cin>>gender;
         ///verify if patient exists by id
