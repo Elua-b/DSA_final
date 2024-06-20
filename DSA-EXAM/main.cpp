@@ -85,7 +85,11 @@ struct Doctor_linked_list {
         cout << "AVAILABLE DOCTORS:" <<  endl;
         cout << "----------------------------"<<endl;
         cout << "----------------------------"<<endl;
-
+        //if no doctor found
+        if (temp == NULL) {
+            cout << "No doctors available" << endl;
+            return;
+        }
         while (temp != NULL) {
             cout << "Doctor ID: " << temp->data.id << ",";
             cout << "Doctor Name: " << temp->data.name << ",";
@@ -93,6 +97,7 @@ struct Doctor_linked_list {
             cout << "---------------------------------" << endl;
             temp = temp->next;
         }
+
     }
 
 };
@@ -116,6 +121,24 @@ struct Patient_linked_list {
             temp->next = new_patient;
         }
     }
+    //validate if id is anumber
+    bool is_number(const string& s) {
+        return !s.empty() && std::find_if(s.begin(),
+            s.end(), [](unsigned char c) { return !std::isdigit(c); }) == s.end();
+    }
+    //verify if date is in  providded format
+    bool is_date(const string& s) {
+        if (s.length() != 10) {
+            return false;
+        }
+        if (s[4] != '-' || s[7] != '-') {
+            return false;
+        }
+        if (!is_number(s.substr(0, 4)) || !is_number(s.substr(5, 2)) || !is_number(s.substr(8, 2))) {
+            return false;
+        }
+        return true;
+    }
     //verify if id added exists
       bool verify_id(integer id) {
         Patient_node* temp = this->head;
@@ -133,7 +156,11 @@ struct Patient_linked_list {
         cout << "AVAILABLE PATIENTS:" <<  endl;
         cout << "----------------------------"<<endl;
         cout << "----------------------------"<<endl;
-
+        //if no patient found
+        if (temp == NULL) {
+            cout << "No patients available" << endl;
+            return;
+        }
         while (temp != NULL) {
             cout << "Patient ID: " << temp->data.id <<  ",";;
             cout << "Patient Name: " << temp->data.name <<  ",";;
@@ -187,7 +214,11 @@ struct Appointment_linked_list {
         cout <<"----------------------------"<<endl;
         cout << "----------------------------"<<endl;
 
-
+    //if no appointment found
+        if (temp == NULL) {
+            cout << "No appointments available" << endl;
+            return;
+        }
     while (temp != NULL) {
 
             cout << "Appointment ID: " << temp->data.id <<  ",";
@@ -207,11 +238,12 @@ int main (){
     Patient_linked_list patients;
     Appointment_linked_list appointments;
     int choice;
-    do {
     cout<<"Welcome to --------"<<endl;
-        cout << "Ruhengeri  Hospital Management System" << endl;
-        cout << "---------------------------------" << endl;
-        cout << "----------------------------"<<endl;
+    cout << "Ruhengeri  Hospital Management System" << endl;
+    cout << "---------------------------------" << endl;
+    cout << "----------------------------"<<endl;
+    do {
+
 
          cout << "Menu:" << endl;
         cout << "1. REGISTER a Doctor" << endl;
@@ -241,6 +273,15 @@ int main (){
             cout<<"Doctor already exists"<<endl;
             break;
         }
+        if(specialization.empty()){
+            cout<<"Specialization cannot be empty"<<endl;
+            break;
+        }
+        if(name.empty()){
+            cout<<"Name cannot be empty"<<endl;
+            break;
+        }
+
         Doctor new_doctor(id, name, specialization);
         doctors.add_doctor(new_doctor);
         cout<<"---Doctor added successfully---"<<endl;
@@ -265,6 +306,17 @@ int main (){
         if(patients.verify_id(id)){
             cout<<"Patient already exists"<<endl;
             break;
+        }
+        if(dob.empty()){
+            cout<<"DOB cannot be empty"<<endl;
+            break;
+        }
+        if(name.empty()){
+            cout<<"Name cannot be empty"<<endl;
+            break;
+        }
+        if(gender.empty()){
+            cout<<"Gender cannot be empty"<<endl;
         }
         Patient new_patient(id, name, dob,gender);
         patients.add_patient(new_patient);
