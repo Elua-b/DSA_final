@@ -82,8 +82,10 @@ struct Doctor_linked_list {
     //display doctors
     void display_doctors() {
         Doctor_node* temp = this->head;
-        cout << "REGISTERED DOCTORS:" <<  endl;
+        cout << "AVAILABLE DOCTORS:" <<  endl;
         cout << "----------------------------"<<endl;
+        cout << "----------------------------"<<endl;
+
         while (temp != NULL) {
             cout << "Doctor ID: " << temp->data.id << ",";
             cout << "Doctor Name: " << temp->data.name << ",";
@@ -128,8 +130,10 @@ struct Patient_linked_list {
     //display patients
     void display_patients() {
         Patient_node* temp = this->head;
-        cout << "REGISTERED PATIENTS:" <<  endl;
+        cout << "AVAILABLE PATIENTS:" <<  endl;
         cout << "----------------------------"<<endl;
+        cout << "----------------------------"<<endl;
+
         while (temp != NULL) {
             cout << "Patient ID: " << temp->data.id <<  ",";;
             cout << "Patient Name: " << temp->data.name <<  ",";;
@@ -179,10 +183,12 @@ struct Appointment_linked_list {
 //display appointments
     void display_appointments() {
         Appointment_node* temp = this->head;
-        cout <<"REGISTERED APPOINTMENTS:" <<  endl;
+        cout <<"AVAILABLE APPOINTMENTS:" <<  endl;
         cout <<"----------------------------"<<endl;
+        cout << "----------------------------"<<endl;
 
-        while (temp != NULL) {
+
+    while (temp != NULL) {
 
             cout << "Appointment ID: " << temp->data.id <<  ",";
             cout << "Patient ID: " << temp->data.patient_id <<  ",";
@@ -202,9 +208,12 @@ int main (){
     Appointment_linked_list appointments;
     int choice;
     do {
-        cout << "Ruhengeri Referial Hospital Management System" << endl;
+    cout<<"Welcome to --------"<<endl;
+        cout << "Ruhengeri  Hospital Management System" << endl;
         cout << "---------------------------------" << endl;
-        cout << "Menu:" << endl;
+        cout << "----------------------------"<<endl;
+
+         cout << "Menu:" << endl;
         cout << "1. REGISTER a Doctor" << endl;
         cout << "2. REGISTER a Patient" << endl;
         cout << "3. REGISTER an  Appointment" << endl;
@@ -247,7 +256,7 @@ int main (){
         cin >> id;
         cout << "Enter Patient Name: ";
         cin >> name;
-        cout << "Enter Patient DOB: ";
+        cout << "Enter Patient DOB(YYYY-MM-DD) : ";
         cin >> dob;
         cout<<"Enter Patient Gender: ";
         cin>>gender;
@@ -273,7 +282,7 @@ int main (){
         cin >> patient_id;
         cout << "Enter Doctor ID: ";
         cin >> doctor_id;
-        cout << "Enter Date: ";
+        cout << "Enter Date(YYYY-MM-DD): ";
         cin >> date;
         if(!patients.verify_id(patient_id)){
             cout<<"Either Patient or Doctor does not exist"<<endl;
